@@ -42,4 +42,28 @@ class GameScene: SKScene {
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
     }
+    
+    func createFirework(xMovement xMovement: CGFloat, x: Int, y: Int) {
+        
+        let node = SKNode()
+        node.position = CGPoint(x: x, y: y)
+        
+        let firework = SKSpriteNode(imageNamed: "rocket")
+        firework.name = "firework"
+        node.addChild(firework)
+        
+        switch GKRandomSource.sharedRandom().nextIntWithUpperBound(3) {
+        case 0:
+            firework.color = UIColor.cyanColor()
+            firework.colorBlendFactor = 1
+        case 1:
+            firework.color = UIColor.greenColor()
+            firework.colorBlendFactor = 1
+        case 2:
+            firework.color = UIColor.redColor()
+            firework.colorBlendFactor = 1
+        default:
+            break
+        }
+    }
 }
