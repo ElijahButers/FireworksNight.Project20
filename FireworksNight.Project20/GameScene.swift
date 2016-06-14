@@ -65,5 +65,19 @@ class GameScene: SKScene {
         default:
             break
         }
+        
+        let path = UIBezierPath()
+        path.moveToPoint(CGPoint(x: 0, y: 0))
+        path.addLineToPoint(CGPoint(x: xMovement, y: 1000))
+        
+        let move = SKAction.followPath(path.CGPath, asOffset: true, orientToPath: true, speed: 200)
+        node.runAction(move)
+        
+        let emitter = SKEmitterNode(fileNamed: "fuse")!
+        emitter.position = CGPoint(x: 0, y: -22)
+        node.addChild(emitter)
+        
+        fireworks.append(node)
+        addChild(node)
     }
 }
