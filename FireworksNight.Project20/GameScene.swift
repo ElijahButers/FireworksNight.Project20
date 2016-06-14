@@ -32,6 +32,7 @@ class GameScene: SKScene {
         background.zPosition = -1
         addChild(background)
         
+        gameTimer = NSTimer.scheduledTimerWithTimeInterval(6, target: self, selector: #selector(launchFireworks), userInfo: nil, repeats: true)
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
