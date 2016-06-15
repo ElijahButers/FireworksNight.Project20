@@ -162,5 +162,15 @@ class GameScene: SKScene {
         default:
             break
             }
+        }
+    }
+    
+    func explodeFirework(firework: SKNode) {
+        
+        let emitter = SKEmitterNode(fileNamed: "explode")!
+        emitter.position = firework.position
+        addChild(emitter)
+        
+        firework.removeFromParent()
     }
 }
