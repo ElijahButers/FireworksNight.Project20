@@ -44,6 +44,31 @@ class GameScene: SKScene {
         /* Called before each frame is rendered */
     }
     
+    func checkForTouches(touches: Set<UITouch>) {
+        
+        guard let touch = touches.first else { return }
+        
+        let location = touch.locationInNode(self)
+        let nodes = nodesAtPoint(location)
+        
+        for node in nodes {
+            if node is SKSpriteNode {
+                let sprite = node as! SKSpriteNode
+                if sprite.name == "firework" {
+                    
+                    for parent in fireworks {
+                        let firework = parent.children[0] as! SKSpriteNode
+                        if firework.name == "selected" && firework.color != sprite.color {
+                            firework.name = "firework"
+                            firework.colorBlendFactor = 1
+                        }
+                    }
+                    sprite.name = "selected"
+                    sprite.colorBlendFactor = 0
+            }
+        }
+    }
+    
     func createFirework(xMovement xMovement: CGFloat, x: Int, y: Int) {
         
         let node = SKNode()
