@@ -50,6 +50,13 @@ class GameScene: SKScene {
    
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
+        for (index, firework) in fireworks.enumerate().reverse() {
+            if firework.position.y > 900 {
+                // this uses a position high above so that rockets can explode off screen
+                fireworks.removeAtIndex(index)
+                firework.removeFromParent()
+            }
+        }
     }
     
     func checkForTouches(touches: Set<UITouch>) {
