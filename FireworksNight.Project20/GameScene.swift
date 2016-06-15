@@ -36,8 +36,16 @@ class GameScene: SKScene {
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        super.touchesBegan(touches, withEvent: event)
        /* Called when a touch begins */
+        checkForTouches(touches)
         
+    }
+    
+    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        super.touchesMoved(touches, withEvent: event)
+        
+        checkForTouches(touches)
     }
    
     override func update(currentTime: CFTimeInterval) {
